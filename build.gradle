@@ -3,7 +3,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.gradle.plugin-publish'
 
 sourceCompatibility = 1.7
-version = '1.4'
+version = '1.5'
 group = 'cern-ais'
 
 repositories {
@@ -51,7 +51,7 @@ pluginBundle {
 
     plugins {
         greetingsPlugin {
-            id = 'cern-build-pentaho-plugin'
+            id = 'cern.ais.datawarehouse.pentahopluginbuilder'
             displayName = 'Pentaho Plugin Builder plugin'
         }
     }
