@@ -1,0 +1,58 @@
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+apply plugin: 'com.gradle.plugin-publish'
+
+sourceCompatibility = 1.7
+version = '1.4'
+group = 'cern-ais'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+publishing {
+    repositories {
+        maven {
+            url 'https://aistools-prod.cern.ch/nexus/content/repositories/releases/'
+            credentials {
+                username "${nexusUsername}"
+                password "${nexusPassword}"
+            }
+        }
+    }
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.4"
+    }
+}
+
+pluginBundle {
+    website = 'http://thejavatar.com'
+    vcsUrl = 'https://github.com/thejavatar/Pentaho-Plugin-Builder'
+    description = 'Facilitates creating Pentaho plugin'
+    tags = ['pentaho', 'pentaho-plugin']
+
+    plugins {
+        greetingsPlugin {
+            id = 'cern-build-pentaho-plugin'
+            displayName = 'Pentaho Plugin Builder plugin'
+        }
+    }
+}

@@ -1,0 +1,9 @@
+.gradle/
+.idea/
+build/
+gradle/
+gradlew
+gradlew.bat
+cern-build-pentaho-plugin.iml
+.git-github/
+.git-cern/
